@@ -12,6 +12,21 @@ export default new Router({
       component: Home
     },
     {
+      path: '/svg',
+      name: 'svgcom',
+      component: () => import('./components/svgcom.vue')
+    },
+    {
+      path: '/canvas',
+      name: 'canvascom',
+      component: () => import('./components/canvascom.vue')
+    },
+    {
+      path: '/mapv',
+      name: 'mapvcom',
+      component: () => import('./components/mapvcom.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

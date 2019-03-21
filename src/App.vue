@@ -1,29 +1,65 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="nav">
+      <el-menu :default-active="activeItem" @select="gotoPath">
+        <el-menu-item index="/">
+          <i class="el-icon-caret-left"></i>
+          <span slot="title">首页</span>
+        </el-menu-item>
+        <el-menu-item index="/svg">
+          <i class="el-icon-menu"></i>
+          <span slot="title">svg</span>
+        </el-menu-item>
+        <el-menu-item index="/canvas">
+          <i class="el-icon-menu"></i>
+          <span slot="title">canvas</span>
+        </el-menu-item>
+        <el-menu-item index="/mapv">
+          <i class="el-icon-menu"></i>
+          <span slot="title">mapv</span>
+        </el-menu-item>
+      </el-menu>
     </div>
-    <router-view/>
+    <div class="view">
+      <router-view />
+    </div>
   </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+  export default {
+    name: 'App',
+    computed: {
+      activeItem() {
+        return this.$route.path;
+      }
+    },
+    methods: {
+      gotoPath(index) {
+        this.$router.push(index);
+      }
     }
   }
-}
+</script>
+
+<style lang="less">
+@import './assets/drawframe.less';
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    color: #2c3e50;
+
+    display: flex;
+  }
+
+  .nav {
+    flex: 0 0 200px;
+  }
+
+  .view {
+    flex: 1;
+    padding: 10px;
+  }
 </style>
